@@ -20,6 +20,23 @@ until [ -d /data/adb ]; do
     attempt=$((attempt+1)); [ "$attempt" -lt 120 ] || exit 3; sleep 2
 done
 exec >>/data/adb/fw-provision.log 2>&1
+# Bound repeated attempts: after five failed boots of the same build, stop retrying.
+# The image still boots; the reason stays in fw-provision.log. Removing the marker retries.
+tries=/data/adb/fw-provision.tries
+count=0
+if [ -f "$tries" ]; then
+    saved=$(cat "$tries" 2>/dev/null || true)
+    saved_id=${saved#* }
+    if [ "$saved" != "$saved_id" ] && [ "$saved_id" = "$fw_id" ]; then
+        case "${saved%% *}" in *[!0-9]*|'') count=0;; *) count=${saved%% *};; esac
+    fi
+fi
+count=$((count+1))
+printf '%s %s\n' "$count" "$fw_id" > "$tries"
+if [ "$count" -gt 5 ]; then
+    echo "First-boot provisioning gave up after $count attempts (build $fw_id); remove $tries to retry."
+    exit 0
+fi
 mkdir -p "$fw_data"
 tar -xzf "$fw_tmp/fw-payload.tgz" -C "$fw_data"
 cd "$fw_data"
@@ -52,6 +69,7 @@ android_cmd am start --user 0 -a android.intent.action.MAIN -c android.intent.ca
 @@ADS_APPLY@@
 printf '%s\n' "$fw_id" > "$fw_marker.next"
 mv "$fw_marker.next" "$fw_marker"
+rm -f "$tries"
 rm -f "$fw_tmp/fw-payload.tgz"
 rm -rf "$fw_data/apps"
 echo 'First-boot provisioning complete'

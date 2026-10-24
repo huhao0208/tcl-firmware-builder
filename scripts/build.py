@@ -147,7 +147,7 @@ sh /data/adb/fw-bundle/install-policy.sh'''
     firstboot = work/'fw-firstboot.sh'
     firstboot.write_text(script)
     subprocess.run(['sh', '-n', str(firstboot)], check=True)
-    for name in ['policy-common.sh', 'install-apk.sh', 'install-policy.sh']:
+    for name in ['30-aerial-home.sh', 'policy-common.sh', 'install-apk.sh', 'install-policy.sh']:
         if name in files:
             check = work/name
             check.write_bytes(files[name][0])
