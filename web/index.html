@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="为 TCL T800T11 / V178 选择桌面与组件，由 GitHub Actions 构建完整 U 盘刷机包。">
+  <meta name="theme-color" content="#21726B">
+  <title>电视固件工坊 · TCL T800T11</title>
+  <link rel="stylesheet" href="./theme.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#configuration">跳到选配</a>
+  <header class="site-header page-width">
+    <a class="brand" href="./" aria-label="电视固件工坊首页"><span class="brand-mark" aria-hidden="true">▰</span>电视固件工坊</a>
+    <nav aria-label="主导航"><a href="#task">我的构建</a><a href="https://github.com/huhao0208/tcl-firmware-builder" target="_blank" rel="noopener noreferrer">开源仓库 ↗</a></nav>
+  </header>
+  <main class="page-width">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">TCL T800T11 · ANDROID 11 · V178</p><h1 id="page-title">给电视配一套，<br>用得顺手的系统。</h1><p class="lede">选好桌面和组件，交给 GitHub 构建。完成后下载完整镜像，用 U 盘刷入。</p></div>
+      <div class="compatibility"><span class="board-icon" aria-hidden="true">▦</span><div><strong>仅支持这一套硬件</strong><p>T800T11 主板<br><code>tc8000_ay30a2</code></p><a href="https://github.com/huhao0208/tcl-firmware-builder/blob/main/docs/FLASHING.md" target="_blank" rel="noopener noreferrer">先核对刷入条件 ↗</a></div></div>
+    </section>
+    <div id="page-message" class="notice page-message" role="status" aria-live="polite">正在载入组件清单…</div>
+    <div class="builder-grid">
+      <form id="configuration" class="configuration" novalidate aria-labelledby="configuration-title">
+        <h2 id="configuration-title" class="section-title">选择配置</h2>
+        <fieldset class="panel"><legend>基础系统</legend><div class="choice-grid">
+          <label class="choice"><input type="radio" name="root" value="yes" checked><span><strong>Magisk 27</strong><small>支持自定义桌面、广告管理和系统适配</small></span></label>
+          <label class="choice"><input type="radio" name="root" value="no"><span><strong>原厂 V178</strong><small>输出核对过的原包，不包含扩展组件</small></span></label>
+        </div></fieldset>
+        <fieldset id="launcher-group" class="panel"><legend>开机桌面</legend><div class="choice-grid">
+          <label class="choice"><input type="radio" name="launcher" value="aerial" checked><span><strong>Aerial Workbench</strong><small>主题、屏保、原生亮度与护眼、在线升级</small></span></label>
+          <label class="choice"><input type="radio" name="launcher" value="stock"><span><strong>原厂桌面</strong><small>保留原桌面入口，其他组件仍可单独选配</small></span></label>
+        </div><p class="help">Aerial 会作为默认桌面，替换原厂桌面的开机与主页入口。</p></fieldset>
+        <fieldset id="components-group" class="panel"><legend>扩展组件</legend>
+          <label class="check-row"><input type="checkbox" name="ads" checked><span><strong>广告管理</strong><small>CastGuard + 投屏广告基础规则，可自行添加订阅</small></span><span class="component-label">MAGISK</span></label>
+          <label class="check-row"><input type="checkbox" name="remote_key" checked><span><strong>购物键自定义</strong><small>将“直播购物”键绑定到已安装应用，需要 Aerial</small></span><span class="component-label">REMOTE</span></label>
+        </fieldset>
+        <fieldset id="apps-group" class="panel"><legend>预装应用</legend><div class="panel-heading"><p class="help">勾选不需要的应用。首次启动移除其当前用户入口，保留系统原件，可恢复。</p><button id="toggle-apps" disabled class="text-button" type="button">全部保留</button></div><div id="apps-list" class="apps-list"></div></fieldset>
+        <fieldset id="policy-group" class="panel"><legend>安装策略</legend><div id="policies" class="policy-list"></div><p class="help">只调整列出的厂商安装规则，不关闭签名验证或 SELinux，也不会自动开启 ADB 调试。策略在开机应用，厂商云控可能再次覆盖。</p></fieldset>
+        <p class="notice info" id="root-help">扩展组件需要 Magisk。所有自定义组合都会标记为“尚未实刷”，构建校验不等于启动验证。</p>
+        <div id="form-error" class="field-error" tabindex="-1" role="alert"></div>
+      </form>
+      <aside class="summary-wrap" aria-labelledby="summary-title"><div class="summary">
+        <div class="television" aria-hidden="true"><div class="tv-screen"><div class="preview-top">T800T11 <span id="preview-root">MAGISK 27</span></div><div class="preview-clock">10:24</div><div id="preview-launcher" class="preview-launcher">Aerial</div><div class="preview-apps"><span></span><span></span><span></span><span></span></div></div><div class="tv-foot"></div></div>
+        <h2 id="summary-title">本次配置</h2><dl id="summary-list" class="summary-list"></dl>
+        <div class="build-state"><span class="status-dot" aria-hidden="true"></span><span id="validation-label">自定义组合 · 尚未实刷</span></div>
+        <button id="submit" class="button primary" type="submit" form="configuration" disabled><span>在 GitHub 提交构建</span><span aria-hidden="true">↗</span></button>
+        <p class="submit-note">需要 GitHub 账号。下一页确认提交后开始构建，网页不接收访问令牌。</p>
+        <a id="continue-link" class="continue-link" hidden target="_blank" rel="noopener noreferrer">重新打开 GitHub 确认页 ↗</a>
+        <p class="output-label">输出格式</p><p class="output-name">ZIP → 完整 IMG</p><p class="help">解压后保留固定文件名，复制到 U 盘根目录。</p>
+      </div></aside>
+    </div>
+    <section id="task" class="task-panel panel" aria-labelledby="task-title">
+      <div class="task-heading"><div><p class="eyebrow">BUILD STATUS</p><h2 id="task-title">查看我的构建</h2></div><p class="help">任务编号就是 GitHub 构建请求的 Issue 编号。</p></div>
+      <form id="task-form" class="task-form" novalidate><div class="query-field"><label for="task-number">任务编号</label><div class="input-wrap"><span aria-hidden="true">#</span><input id="task-number" name="task" inputmode="numeric" autocomplete="off" placeholder="例如 7" aria-describedby="query-help query-error"><button id="clear-task" disabled type="button" class="clear-button" aria-label="清空任务编号" hidden>×</button></div></div><button id="query-button" type="submit" class="button secondary">查询进度</button><p id="query-help" class="sr-only">请输入 GitHub 构建请求的正整数编号。</p></form>
+      <p id="query-error" class="field-error" role="alert"></p>
+      <div id="task-result" class="task-result" aria-live="polite"><div class="empty-symbol" aria-hidden="true">↓</div><p>提交配置后，在这里查看进度和下载结果。</p></div>
+    </section>
+    <section class="flash-notes" aria-labelledby="flash-title"><h2 id="flash-title">下载之后</h2><div class="steps"><div><span>1</span><h3>解压并核对</h3><p>ZIP 内包含完整镜像、配置和 SHA-256。ZIP 不能直接改名当 IMG 使用。</p></div><div><span>2</span><h3>准备 U 盘</h3><p>镜像放在根目录，固定名称保持不变；另存原救砖包，避免覆盖唯一备份。</p></div><div><span>3</span><h3>按机身键刷入</h3><p>断电后按住机身电源键再通电。刷机可能清空应用、账号和设置。</p></div></div></section>
+  </main>
+  <footer class="page-width site-footer"><p>公开构建配方与校验记录 · 每个组合独立构建</p><a href="https://github.com/huhao0208/tcl-firmware-builder/blob/main/SOURCES.md" target="_blank" rel="noopener noreferrer">软件来源与许可 ↗</a></footer>
+  <noscript><p class="notice page-width">请启用 JavaScript 使用在线选配，或打开 GitHub 仓库中的构建请求模板。</p></noscript>
+</body>
+</html>

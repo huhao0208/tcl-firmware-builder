@@ -1,0 +1,6 @@
+service fw_provision /system/bin/sh ${MAGISKTMP}/fw-firstboot.sh
+    class late_start
+    user root
+    group root system shell
+    seclabel u:r:magisk:s0
+    oneshot

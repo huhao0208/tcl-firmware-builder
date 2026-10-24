@@ -1,0 +1,137 @@
+{
+  "vendor": [
+    {
+      "enable": "true",
+      "strategies": [
+        {
+          "name": "safeStrategy",
+          "enable": "true",
+          "priority": "0"
+        },
+        {
+          "name": "blackListStrategy",
+          "enable": "true",
+          "packages": [],
+          "priority": "1"
+        },
+        {
+          "name": "thridStrategy",
+          "enable": "false",
+          "packages": [
+            "com.dangbeimarket",
+            "com.shafa.market",
+            "com.ant.store.appstore"
+          ],
+          "priority": "2"
+        },
+        {
+          "name": "launcherStrategy",
+          "enable": "true",
+          "packages": [],
+          "priority": "3"
+        },
+        {
+          "name": "overDueStrategy",
+          "enable": "true",
+          "packages": [],
+          "priority": "4"
+        },
+        {
+          "name": "pmStrategy",
+          "enable": "true",
+          "priority": "5"
+        }
+      ]
+    }
+  ],
+  "home": [
+    {
+      "enable": "true",
+      "strategies": [
+        {
+          "name": "safeStrategy",
+          "enable": "true",
+          "priority": "0"
+        },
+        {
+          "name": "blackListStrategy",
+          "enable": "true",
+          "packages": [],
+          "priority": "1"
+        },
+        {
+          "name": "thridStrategy",
+          "enable": "false",
+          "packages": [
+            "com.dangbeimarket",
+            "com.shafa.market",
+            "com.ant.store.appstore"
+          ],
+          "priority": "2"
+        },
+        {
+          "name": "launcherStrategy",
+          "enable": "false",
+          "packages": [],
+          "priority": "3"
+        },
+        {
+          "name": "overDueStrategy",
+          "enable": "true",
+          "packages": [],
+          "priority": "4"
+        },
+        {
+          "name": "pmStrategy",
+          "enable": "true",
+          "priority": "5"
+        }
+      ]
+    }
+  ],
+  "home_adb": [
+    {
+      "enable": "true",
+      "strategies": [
+        {
+          "name": "safeStrategy",
+          "enable": "true",
+          "priority": "0"
+        },
+        {
+          "name": "blackListStrategy",
+          "enable": "true",
+          "packages": [],
+          "priority": "1"
+        },
+        {
+          "name": "thridStrategy",
+          "enable": "false",
+          "packages": [
+            "com.dangbeimarket",
+            "com.shafa.market",
+            "com.ant.store.appstore"
+          ],
+          "priority": "2"
+        },
+        {
+          "name": "launcherStrategy",
+          "enable": "false",
+          "packages": [],
+          "priority": "3"
+        },
+        {
+          "name": "overDueStrategy",
+          "enable": "true",
+          "packages": [],
+          "priority": "4"
+        },
+        {
+          "name": "pmStrategy",
+          "enable": "false",
+          "priority": "5"
+        }
+      ]
+    }
+  ]
+}

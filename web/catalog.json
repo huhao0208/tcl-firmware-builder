@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "repository": "huhao0208/tcl-firmware-builder",
+  "device": {
+    "id": "tcl-t800t11-v178",
+    "name": "TCL T800T11",
+    "board": "tc8000_ay30a2",
+    "firmware": "V178",
+    "android": 11,
+    "flash_filename": "V8-T800T11-LF1V178.001228_notfull.img"
+  },
+  "apps": [
+    {
+      "id": "guard",
+      "label": "安全卫士",
+      "package": "com.tcl.guard"
+    },
+    {
+      "id": "playskill",
+      "label": "玩机技巧",
+      "package": "com.tcl.playskill"
+    },
+    {
+      "id": "videocall",
+      "label": "视频通话",
+      "package": "com.tcl.videocall"
+    },
+    {
+      "id": "appmarket",
+      "label": "系统应用商店",
+      "package": "com.tcl.appmarket2"
+    },
+    {
+      "id": "search",
+      "label": "搜索",
+      "package": "com.tcl.wholenetsearch"
+    },
+    {
+      "id": "art",
+      "label": "艺术画框",
+      "package": "com.tcl.appreciate.art"
+    },
+    {
+      "id": "weather",
+      "label": "天气预报",
+      "package": "com.tcl.common.weather"
+    }
+  ],
+  "defaults": {
+    "schema": 1,
+    "device": "tcl-t800t11-v178",
+    "root": true,
+    "launcher": "aerial",
+    "ads": true,
+    "remote_key": true,
+    "remove_apps": [
+      "guard",
+      "playskill",
+      "videocall",
+      "appmarket",
+      "search",
+      "art",
+      "weather"
+    ],
+    "install_policy": "vendor"
+  },
+  "policies": [
+    {
+      "id": "vendor",
+      "label": "保留原厂安装策略"
+    },
+    {
+      "id": "home",
+      "label": "允许安装其他桌面"
+    },
+    {
+      "id": "home_adb",
+      "label": "允许其他桌面与 ADB 安装"
+    }
+  ]
+}
