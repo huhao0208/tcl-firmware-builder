@@ -10,3 +10,5 @@
 ## 许可范围
 
 桌面运行时依赖、字体、图标和数据的独立协议见 AERIAL-THIRD-PARTY-NOTICES.txt。该文件含 69 项解析依赖的许可证、版权和原始 NOTICE，不将依赖统一改为 MIT。Magisk 保留 GPL-3.0；原 TCL 系统固件不属于 MIT 代码，公开构建器的许可不证明厂商固件的再分发授权。任何完整固件分发者仍需独立核对这部分权利。
+
+Magisk 对应源码及构建说明：https://github.com/topjohnwu/Magisk/tree/v27.0 （含其固定子模块记录）；源代码下载：https://github.com/topjohnwu/Magisk/archive/refs/tags/v27.0.tar.gz 。完整 GPL-3.0 正文随 MAGISK-LICENSE.txt 附带。许可附件覆盖构建器可选组件，实际是否包含某组件以 BUILD.json 的配置为准。

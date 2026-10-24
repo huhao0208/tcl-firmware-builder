@@ -10,6 +10,7 @@ APPS = {app['id']: (app['label'], app['package']) for app in OPTIONS['apps']}
 DEFAULT = OPTIONS['defaults']
 FIELDS = set(DEFAULT)
 MARKER = '<!-- TVFW:1 -->'
+LICENSE_FILES = ('LICENSE', 'SOURCES.md', 'AERIAL-LICENSE.txt', 'FONT-LICENSE-OFL.txt', 'AERIAL-THIRD-PARTY-NOTICES.txt', 'MAGISK-LICENSE.txt')
 
 
 def unique_object(pairs):
@@ -70,7 +71,7 @@ def is_custom(value):
 
 
 def recipe_digest(root):
-    paths = [root/'catalog/inputs.json', root/'web/catalog.json']
+    paths = [root/'catalog/inputs.json', root/'web/catalog.json'] + [root/name for name in LICENSE_FILES]
     for folder in ['scripts', 'templates', 'components']:
         paths += [p for p in (root/folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts and p.suffix != '.pyc']
     digest = hashlib.sha256()
