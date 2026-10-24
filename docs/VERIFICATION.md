@@ -7,7 +7,7 @@
 - [任务 #2](https://github.com/huhao0208/tcl-firmware-builder/issues/2)、[成功运行](https://github.com/huhao0208/tcl-firmware-builder/actions/runs/40079854825)。
 - 默认组合：Magisk 27、Aerial wb.11、CastGuard、购物键桥接、七项 user 0 入口移除、保留原厂安装策略。
 - 官方 Magisk APK 内的静态 x86_64 magiskboot 在 GitHub Ubuntu 运行器成功解包/重包。
-- 输入固定摘要、boot 原内核与原 ramdisk、新增 overlay 权限/内容、15 项分区 VERIFY、其余容器字节不变与 AML CRC 校验通过。
+- 输入固定摘要、boot 原内核与原 ramdisk、新增 overlay 权限/内容、全部分区 VERIFY（该镜像共 15 项）、其余容器字节不变与 AML CRC 校验通过。
 - [公开成品 Release](https://github.com/huhao0208/tcl-firmware-builder/releases/tag/build-d1f102b5d8d98eba)。
 - ZIP 大小 `1929121750` 字节，SHA-256 `f27b1ba51b23840779d172b2f6c410a88c7bdb5238db7a93b90a0f5c0f01faa6`。
 - IMG 大小 `2913239064` 字节，SHA-256 `78901b8c949eec7d075a99910e8b9045ea14eff30fb2bf34773f8612ba20e943`。

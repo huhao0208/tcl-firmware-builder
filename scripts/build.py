@@ -182,7 +182,11 @@ def package(image, metadata, output):
             info = zipfile.ZipInfo('licenses/'+name, date_time=(2026, 10, 24, 0, 0, 0))
             info.compress_type, info.external_attr = zipfile.ZIP_DEFLATED, 0o100644 << 16
             archive.writestr(info, (ROOT/name).read_bytes())
-    require(path.stat().st_size < 2*1024**3, '压缩包超过 GitHub 单附件限制')
+    size = path.stat().st_size
+    if size > 1.9*1024**3:
+        print('警告：ZIP 已达 '+str(size)+' 字节，距 GitHub 单附件 2GiB 上限不足 10%；'
+              '组件再增大需改分卷或精简许可附件之外的内容。', flush=True)
+    require(size < 2*1024**3, '压缩包超过 GitHub 单附件限制')
     metadata = dict(metadata, zip_file=path.name, zip_bytes=path.stat().st_size, zip_sha256=digest(path))
     (output/'build.json').write_text(json.dumps(metadata, ensure_ascii=False, indent=2)+'\n')
     (output/(path.name+'.sha256')).write_text(metadata['zip_sha256']+'  '+path.name+'\n')
