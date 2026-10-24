@@ -1,0 +1,10 @@
+work/
+dist/
+artifacts/
+__pycache__/
+*.pyc
+.DS_Store
+.env*
+*.keystore
+*.p12
+*.password
