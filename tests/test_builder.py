@@ -114,8 +114,9 @@ class ArchiveTests(unittest.TestCase):
             result = build.package(image, metadata, root)
             self.assertEqual(result['zip_sha256'], firmware.digest(root/result['zip_file']))
             with zipfile.ZipFile(root/result['zip_file']) as archive:
-                self.assertEqual(set(archive.namelist()), {firmware.FLASH_NAME,'BUILD.json','SHA256SUMS','README-刷机说明.txt'})
+                self.assertEqual(set(archive.namelist()), {firmware.FLASH_NAME,'BUILD.json','SHA256SUMS','README-刷机说明.txt', 'licenses/SOURCES.md','licenses/AERIAL-LICENSE.txt','licenses/FONT-LICENSE-OFL.txt','licenses/AERIAL-THIRD-PARTY-NOTICES.txt'})
                 self.assertEqual(archive.read(firmware.FLASH_NAME), image.read_bytes())
+                self.assertEqual(archive.read('licenses/AERIAL-THIRD-PARTY-NOTICES.txt'), (build.ROOT/'AERIAL-THIRD-PARTY-NOTICES.txt').read_bytes())
                 self.assertIn(metadata['firmware_sha256'], archive.read('SHA256SUMS').decode())
             with self.assertRaises(FileExistsError): build.package(image, metadata, root)
 
