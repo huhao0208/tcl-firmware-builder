@@ -15,7 +15,11 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, '[构建]')
+    # build-request 标签只有协作者能在建 Issue 时保留；公开请求不触发构建。
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (startsWith(github.event.issue.title, '[构建]') &&
+       contains(github.event.issue.labels.*.name, 'build-request'))
     runs-on: ubuntu-latest
     timeout-minutes: 60
     permissions:

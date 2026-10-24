@@ -20,6 +20,7 @@ jobs:
       - name: Shell syntax
         run: |
           sh -n templates/fw-firstboot.sh
+          sh -n templates/30-aerial-home.sh
           sh -n templates/policy-common.sh
           sh -n templates/install-apk.sh
           sh -n templates/install-policy.sh

@@ -128,7 +128,16 @@ def publish():
     repo = repository()
     assets = [str(archive), str(Path('dist')/(archive.name+'.sha256')), 'dist/build.json']
     found = subprocess.run(['gh', 'release', 'view', tag, '--repo', repo, '--json', 'isDraft'], capture_output=True, text=True)
-    if found.returncode == 0:
+    if found.returncode != 0:
+        created = subprocess.run(['gh', 'release', 'create', tag, *assets, '--repo', repo, '--draft', '--prerelease', '--target', os.environ['GITHUB_SHA'],
+                                  '--title', 'TCL V178 · '+data['build_id'], '--notes-file', str(notes)], capture_output=True, text=True)
+        if created.returncode != 0:
+            # 相同 build 的并行运行可能刚创建同名 Release：重查一次，按已存在流程处理。
+            found = subprocess.run(['gh', 'release', 'view', tag, '--repo', repo, '--json', 'isDraft'], capture_output=True, text=True)
+            require(found.returncode == 0, 'gh release create 失败：'+(created.stderr or '').strip())
+        else:
+            found = None
+    if found is not None and found.returncode == 0:
         current = json.loads(found.stdout)
         if current['isDraft']:
             subprocess.run(['gh', 'release', 'upload', tag, *assets, '--repo', repo, '--clobber'], check=True)
@@ -137,9 +146,6 @@ def publish():
             require(existing is not None, 'Published artifact incomplete')
             status('ready', '构建已完成，可下载完整刷机包。', existing)
             return
-    else:
-        subprocess.run(['gh', 'release', 'create', tag, *assets, '--repo', repo, '--draft', '--prerelease', '--target', os.environ['GITHUB_SHA'],
-                        '--title', 'TCL V178 · '+data['build_id'], '--notes-file', str(notes)], check=True)
     subprocess.run(['gh', 'release', 'edit', tag, '--repo', repo, '--draft=false', '--prerelease', '--latest=false', '--notes-file', str(notes)], check=True)
     verified = None
     for attempt in range(4):
