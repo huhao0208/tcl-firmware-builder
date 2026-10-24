@@ -1,5 +1,7 @@
 # 构建器安全边界
 
+> 本文写给关心安全与信任边界的读者；入门与常见问题看 [README](README.md)。
+
 请求内容只作为数据：固定 schema、严格布尔、有限枚举和应用 ID。拒绝未知字段、重复 JSON 键及超长输入。不接受 shell、任意下载 URL、任意 APK 和提交者分支。
 
 Issue opened 使用创建事件快照；Actions 检出可信默认分支的事件 SHA。工作流只在本公开仓库使用临时 GITHUB_TOKEN，权限限 contents / issues 写入，不使用私人固件仓库访问令牌。网页无 PAT，不持有签名密钥。
