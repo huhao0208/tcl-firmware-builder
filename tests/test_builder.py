@@ -35,6 +35,8 @@ class ConfigurationTests(unittest.TestCase):
             with self.assertRaises(ValueError): config.validate(value)
         text = json.dumps(config.DEFAULT)
         with self.assertRaises(ValueError): config.parse(text[:-1] + ',"root":true}')
+        with self.assertRaisesRegex(ValueError, '^重复配置字段$'):
+            config.parse('{"@mention [external](https://example.invalid)":1,"@mention [external](https://example.invalid)":2}')
         with self.assertRaises(ValueError): config.parse(' '*4097)
 
     def test_dependencies_and_issue_contract(self):

@@ -1,6 +1,6 @@
 # 电视固件工坊
 
-[打开在线选配](https://huhao0208.github.io/tcl-firmware-builder/) · [刷机说明](docs/FLASHING.md) · [构建边界](PRODUCT.md) · [第三方来源](SOURCES.md)
+[打开在线选配](https://huhao0208.github.io/tcl-firmware-builder/) · [刷机说明](docs/FLASHING.md) · [构建边界](PRODUCT.md) · [第三方来源](SOURCES.md) · [验证记录](docs/VERIFICATION.md)
 
 为 **TCL T800T11 / tc8000_ay30a2 / Android 11 / V178** 选择组件，使用 GitHub Actions 生成完整 U 盘刷机镜像。当前不支持其他板型、版本或 Recovery `update.zip`。
 
