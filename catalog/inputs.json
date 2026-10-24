@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "release": "inputs-v1",
+  "stock": {
+    "version": 1,
+    "file": "V178-stock-rescue.img",
+    "bytes": 2913239064,
+    "sha256": "d152d88de136280996b375df6e50ab5dc5210783a4a81ac156324fd6591664e7",
+    "part_bytes": 1073741824,
+    "parts": [
+      {
+        "file": "V178-stock-rescue.img.part01",
+        "bytes": 1073741824,
+        "sha256": "edbc69e3538662cc7541285222c80fd6ce06f0fb2e4f0c870a7beecaa684961f"
+      },
+      {
+        "file": "V178-stock-rescue.img.part02",
+        "bytes": 1073741824,
+        "sha256": "1cac68a016ff32af69f325505d25e3edab02ed525d1d73a1bea3001651411117"
+      },
+      {
+        "file": "V178-stock-rescue.img.part03",
+        "bytes": 765755416,
+        "sha256": "7677f87dcb51c0cdad7cdf77869d0c91015129c30fb0bcc51171b30080df0206"
+      }
+    ]
+  },
+  "components": {
+    "root_boot": {
+      "file": "V178-Magisk27-boot.img",
+      "bytes": 67108864,
+      "sha256": "11baa5296226ead14dbf49ec0ef948f04706664d10f4801ad770c5888a388895"
+    },
+    "magisk": {
+      "file": "Magisk-v27.0.apk",
+      "bytes": 12498796,
+      "sha256": "f511bd33d3242911d05b0939f910a3133ef2ba0e0ff1e098128f9f3cd0c16610"
+    },
+    "castguard": {
+      "file": "CastGuard-1.1.apk",
+      "bytes": 70171,
+      "sha256": "2f2ed1f2f16a3750e5a8a153480ec6578e0b9b3a5ccf1fc01a98242b45e8c9ac"
+    },
+    "aerial": {
+      "file": "Aerial-Workbench-1.41-wb.11-standard.apk",
+      "bytes": 2910301,
+      "sha256": "d07b09e6a9cb403bb04b403b53c4d80ef637b148e0911c61fffdf09056e05587"
+    },
+    "bridge": {
+      "file": "Aerial-Remote-Key-Bridge-1.0.apk",
+      "bytes": 10219,
+      "sha256": "2a6d989ce547105f8def9a09b46b8e9483694957e0acf40367a5f91dbebc6f5d"
+    }
+  },
+  "aerial_version": "1.41-wb.11",
+  "aerial_version_code": 55,
+  "aerial_signer_sha256": "eb91d3ac9c46c9b8158f929bb62e009732d92569791d3d174de1f3aff18a3306"
+}

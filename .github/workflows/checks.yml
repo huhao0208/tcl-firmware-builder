@@ -1,0 +1,25 @@
+name: Verify builder
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Python contracts and parser tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Web contracts
+        run: |
+          npm test
+          npm run check
+      - name: Shell syntax
+        run: |
+          sh -n templates/fw-firstboot.sh
+          sh -n templates/policy-common.sh
+          sh -n templates/install-apk.sh
+          sh -n templates/install-policy.sh

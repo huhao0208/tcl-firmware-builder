@@ -1,0 +1,6 @@
+id=tcl_cast_ads
+name=TCL Global Ad Hosts
+version=3.0
+versionCode=3
+author=huhao0208
+description=User-managed casting ad domains. Controlled by the TV app, with per-domain switches and undo. Applies once after boot, with no background polling.

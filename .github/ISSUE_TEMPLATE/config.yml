@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 打开在线选配网页
+    url: https://huhao0208.github.io/tcl-firmware-builder/
+    about: 在网页选择组件后生成构建请求

@@ -1,0 +1,11 @@
+TCL Global Ad Hosts / Cast Guard
+
+Default subscription (downloaded only when configured):
+AdAway default blocklist, maintained by the AdAway project and contributors.
+https://github.com/AdAway/adaway.github.io/
+https://adaway.org/hosts.txt
+License: Creative Commons Attribution 3.0
+https://creativecommons.org/licenses/by/3.0/
+
+The subscription is parsed into exact host mappings. Locally added domains and
+disabled entries are retained. The upstream list is not executable code.

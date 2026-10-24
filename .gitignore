@@ -8,3 +8,5 @@ __pycache__/
 *.keystore
 *.p12
 *.password
+
+premium-audit.json

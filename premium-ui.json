@@ -1,0 +1,17 @@
+{
+  "profile": "product-admin",
+  "sourceRoots": [
+    "web"
+  ],
+  "canonicalMap": "UX-CONTRACT.md",
+  "requiredCapabilities": [
+    "Form",
+    "Scrollbar",
+    "Toast",
+    "CRUD",
+    "Select/Listbox"
+  ],
+  "ownership": {
+    "Select/Listbox": "native"
+  }
+}

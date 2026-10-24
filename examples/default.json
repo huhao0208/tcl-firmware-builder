@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "device": "tcl-t800t11-v178",
+  "root": true,
+  "launcher": "aerial",
+  "ads": true,
+  "remote_key": true,
+  "remove_apps": [
+    "guard",
+    "playskill",
+    "videocall",
+    "appmarket",
+    "search",
+    "art",
+    "weather"
+  ],
+  "install_policy": "vendor"
+}
