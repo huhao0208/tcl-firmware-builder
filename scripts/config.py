@@ -2,7 +2,6 @@
 import hashlib
 import json
 import re
-import os
 
 OPTIONS = json.loads((__import__('pathlib').Path(__file__).resolve().parents[1]/'web/catalog.json').read_text())
 DEVICE = OPTIONS['device']['id']
@@ -77,7 +76,7 @@ def recipe_digest(root):
     digest = hashlib.sha256()
     for path in sorted(paths):
         digest.update(str(path.relative_to(root)).encode() + b'\0' + path.read_bytes() + b'\0')
-    digest.update(os.environ.get('GITHUB_SHA', 'local').encode())
+    # 提交 SHA 不参与配方摘要：文档或网页改动不使缓存成品失效。来源提交仍记入 build.json。
     return digest.hexdigest()
 
 

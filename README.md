@@ -7,7 +7,7 @@
 ## 使用
 
 1. 网页选择 Magisk / 原包、Aerial / 原桌面、广告管理、购物键、七项预装入口和安装策略。
-2. 点击“在 GitHub 提交构建”，使用自己的 GitHub 账号在新请求页确认提交。网页不收集访问令牌。
+2. 点击“在 GitHub 提交构建”，使用自己的 GitHub 账号在新请求页确认提交。网页不收集访问令牌。构建仅由带 `build-request` 标签的请求触发，该标签只有本仓库协作者能够保留；公开提交不会启动构建。
 3. 在请求的机器人评论或网页任务查询中查看真实状态；完成后下载 Release 的 ZIP。
 4. 解压、核对 SHA-256，按照刷机说明准备 U 盘。**ZIP 不能直接改名为 IMG。**
 
@@ -24,7 +24,7 @@
 - 只修改 boot_a、对应 VERIFY 和容器 CRC，其余字节不变；
 - 全部分区 VERIFY、IMG / ZIP SHA-256。
 
-成品 ZIP 包含固定名称 IMG、BUILD.json、SHA256SUMS 和中文刷机说明。公共 Release 保存成品，不依赖 Actions 临时产物保留期。相同配置与相同构建源码复用已校验成品。编辑 Issue 不会更改创建时快照；维护者可通过工作流的 `issue_number` 显式重试当前请求内容。
+成品 ZIP 包含固定名称 IMG、BUILD.json、SHA256SUMS、许可附件和中文刷机说明。公共 Release 保存成品，不依赖 Actions 临时产物保留期。相同配置与相同构建配方复用已校验成品：配方摘要只覆盖构建相关文件（固定输入清单、组件与脚本模板），不含提交 SHA，纯文档或网页改动不重建。编辑 Issue 不会更改创建时快照；维护者可通过工作流的 `issue_number` 显式重试当前请求内容。
 
 ```sh
 python3 -m unittest discover -s tests -v
