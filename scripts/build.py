@@ -13,7 +13,7 @@ import tarfile
 import urllib.request
 import zipfile
 
-from config import APPS, build_id, canonical, is_custom, parse, recipe_digest
+from config import APPS, LICENSE_FILES, build_id, canonical, is_custom, parse, recipe_digest
 from firmware import BOOT_SHA, FLASH_NAME, ROOT_SHA, SIZE, STOCK_SHA, digest, records, replace_boot, require, verify_overlay
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -178,6 +178,10 @@ def package(image, metadata, output):
             info = zipfile.ZipInfo(name, date_time=(2026, 10, 24, 0, 0, 0))
             info.compress_type, info.external_attr = zipfile.ZIP_DEFLATED, 0o100644 << 16
             archive.writestr(info, data.encode('utf-8'))
+        for name in LICENSE_FILES:
+            info = zipfile.ZipInfo('licenses/'+name, date_time=(2026, 10, 24, 0, 0, 0))
+            info.compress_type, info.external_attr = zipfile.ZIP_DEFLATED, 0o100644 << 16
+            archive.writestr(info, (ROOT/name).read_bytes())
     require(path.stat().st_size < 2*1024**3, '压缩包超过 GitHub 单附件限制')
     metadata = dict(metadata, zip_file=path.name, zip_bytes=path.stat().st_size, zip_sha256=digest(path))
     (output/'build.json').write_text(json.dumps(metadata, ensure_ascii=False, indent=2)+'\n')
